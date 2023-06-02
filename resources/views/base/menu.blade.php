@@ -1,35 +1,22 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">Sis ABC</a>
+            <a class="navbar-brand" href="{{ url('/') }}">ERythm</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Cadastros
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/usuario') }}">Usuário</a></li>
-                            <li><a class="dropdown-item" href="#">Item 2222</a></li>
-                            <li><a class="dropdown-item" href="#">Item 02</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Item 01</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Item 01</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Item 03</a>
-                    </li>
-                </ul>
+
+            <div class="collapse navbar-collapse border" id="navbarNav">
+                <!-- Navigation-->
+                <div class="btn-group">
+                    <a class="btn btn-dark" href="{{ url('/usuario')}}">Usuários</a>
+                    <a class="btn btn-dark" href="./DiscoList.php">Discos</a>
+                    <a class="btn btn-dark" href="./PedidoList.php">Pedidos</a>
+                </div>
             </div>
-            <div style="margin-right: 50px;">
+
+            <div class="border" style="margin-right: 50px;">
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Logar') }}</a>
