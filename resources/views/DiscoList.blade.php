@@ -1,16 +1,16 @@
 @extends("base.app")
 @section('conteudo')
 
-@section('tituloPagina', 'Listagem de Usuários')
-<h1>Listagem de Usuários</h1>
+@section('tituloPagina', 'Listagem de Discos')
+<h1>Listagem de Discos</h1>
 
-<form action="{{ route('usuario.search') }}" method="post">
+<form action="{{ route('disco.search') }}" method="post">
     @csrf
     <div class="row">
         <div class="col-2">
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
-                <option value="telefone">Telefone</option>
+                <option value="ano">Ano</option>
             </select>
         </div>
 
@@ -22,7 +22,7 @@
             <button class="btn btn-primary" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i> Buscar
             </button>
-            <a class="btn btn-success" href='{{ action("App\Http\Controllers\UsuarioController@create") }}'>
+            <a class="btn btn-success" href='{{ action("App\Http\Controllers\DiscoController@create") }}'>
                 <i class="fa-solid fa-plus"></i> Cadastrar
             </a>
         </div>
@@ -34,34 +34,38 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Artista</th>
+            <th scope="col">Ano</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($usuarios as $item)
-            @php
-                $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.jpg';
-            @endphp
+        @foreach ($discos as $item)
             <tr>
                 <td scope='row'>{{ $item->id }}</td>
                 <td>{{ $item->nome }}</td>
-                <td>{{ $item->telefone }}</td>
-                <td>{{ $item->email }}</td>
-                <td>{{ $item->categoria->nome }}</td>
+                <td>{{ $item->valor }}</td>
+                <td>{{ $item->artista }}</td>
+                <td>{{ $item->ano }}</td>
+
+                <!--
+                @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.jpg';
+                @endphp
                 <td>
                     <img src="/storage/{{ $nome_imagem }}" width="100px" class="img-thumbnail" />
                 </td>
+                -->
+
                 <td> <!--Editar-->
-                    <a href="{{ action('App\Http\Controllers\UsuarioController@edit', $item->id) }}">
+                    <a href="{{ action('App\Http\Controllers\DiscoController@edit', $item->id) }}">
                         <i class='fa-solid fa-pen-to-square' style='color:darkgray;'></i>
                     </a>
                 </td>
-                <td> <!--Excluir-->
-                    <form method="POST" action="{{ action('App\Http\Controllers\UsuarioController@destroy', $item->id) }}">
+                <td>  <!--Excluir-->
+                    <form method="POST" action="{{ action('App\Http\Controllers\DiscoController@destroy', $item->id) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
                         <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset;'>

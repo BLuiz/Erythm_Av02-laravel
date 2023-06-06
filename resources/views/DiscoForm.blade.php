@@ -2,16 +2,16 @@
 @section('conteudo')
 
 @php
-    if (!empty($usuario->id)) {
-        $route = route('usuario.update', $usuario->id);
+    if (!empty($disco->id)) {
+        $route = route('disco.update', $disco->id);
     } else {
-        $route = route('usuario.store');
+        $route = route('disco.store');
     }
 @endphp
 
-@section('tituloPagina', 'Formulário Usuário')
+@section('tituloPagina', 'Formulário Disco')
 
-<h1>Formulário Usuário</h1>
+<h1>Formulário Disco</h1>
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,50 +27,50 @@
     <div class="row">
         <form action='{{ $route }}' method="POST" enctype="multipart/form-data">
             @csrf
-            @if (!empty($usuario->id))
+            @if (!empty($disco->id))
                 @method('PUT')
             @endif
 
             <input type="hidden" name="id" value="
             @if (!empty(old('id'))) {{ old('id') }} 
-            @elseif(!empty($usuario->id)) {{ $usuario->id }} 
+            @elseif(!empty($disco->id)) {{ $disco->id }} 
             @else {{ '' }} @endif" /><br>
 
             <div class="col-3">
                 <label class="form-label">Nome</label><br>
-                <input type="text" class="form-control" name="nome"value="
+                <input type="text" class="form-control" name="nome" value="
                 @if (!empty(old('nome'))) {{ old('nome') }}
-                @elseif(!empty($usuario->nome)) {{ $usuario->nome }}
+                @elseif(!empty($disco->nome)) {{ $disco->nome }}
                 @else {{ '' }} @endif" /><br>
             </div>
 
             <div class="col-3">
-                <label class="form-label">Telefone</label><br>
-                <input type="text" class="form-control" name="telefone"value="
-                @if (!empty(old('telefone'))) {{ old('telefone') }}
-                @elseif(!empty($usuario->telefone)) {{ $usuario->telefone }} 
+                <label class="form-label">Valor</label><br>
+                <input type="text" class="form-control" name="valor" value="
+                @if (!empty(old('valor'))) {{ old('valor') }}
+                @elseif(!empty($disco->valor)) {{ $disco->valor }} 
                 @else {{ '' }} @endif" /><br>
             </div>
 
             <div class="col-3">
-                <label class="form-label">E-mail</label><br>
-                <input type="email" class="form-control" name="email"value="
-                @if (!empty(old('email'))) {{ old('email') }}
-                @elseif(!empty($usuario->email)) {{ $usuario->email }} 
+                <label class="form-label">Artista</label><br>
+                <input type="text" class="form-control" name="artista" value="
+                @if (!empty(old('artista'))) {{ old('artista') }}
+                @elseif(!empty($disco->artista)) {{ $disco->artista }} 
+                @else {{ '' }} @endif" /><br>
+            </div>
+            
+            <div class="col-3">
+                <label class="form-label">Ano</label><br>
+                <input type="text" class="form-control" name="ano" value="
+                @if (!empty(old('ano'))) {{ old('ano') }}
+                @elseif(!empty($disco->ano)) {{ $disco->ano }} 
                 @else {{ '' }} @endif" /><br>
             </div>
 
-            <div class="col-3">
-                <label class="form-label">Categoria</label><br>
-                <select name="categoria_id" class="form-select">
-                    @foreach ($categorias as $item)
-                        <option value="{{ $item->id }}">{{ $item->nome }}</option>
-                    @endforeach
-                </select>
-            </div>
-
+            <!-- Colocar imagem no disco?
             @php
-                $nome_imagem = !empty($usuario->imagem) ? $usuario->imagem : 'sem_imagem.jpg';
+                $nome_imagem = !empty($disco->imagem) ? $disco->imagem : 'disco_sem_img.png';
             @endphp
 
             <div class="col-6">
@@ -79,11 +79,12 @@
                 <br><br>
                 <input type="file" class="form-control" name="imagem" /><br>
             </div>
+            -->
 
             <button class="btn btn-success" type="submit">
                 <i class="fa-solid fa-save"></i> Salvar
             </button>
-            <a href="{{ route('usuario.index') }}" class="btn btn-primary">
+            <a href="{{ route('disco.index') }}" class="btn btn-primary">
                 <i class="fa-solid fa-arrow-left"></i> Voltar
             </a>
             

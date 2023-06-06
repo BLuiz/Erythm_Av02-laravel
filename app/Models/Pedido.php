@@ -24,7 +24,7 @@ class Pedido extends Model
         ];
     }
     
-    public static function messeges(){
+    public static function messages(){
         return [
             'cliente.required'  => 'O cliente do pedido é obrigatório',
             'cliente.max'       => 'Só é permitido 120 caracteres',

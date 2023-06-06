@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('disco', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
-            $table->string('valor');
+            $table->float('valor');
             $table->string('artista', 120)->nullable();
             $table->string('ano', 4)->nullable();
             $table->timestamps();
