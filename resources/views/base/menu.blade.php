@@ -36,7 +36,7 @@
                         @endif
                         @else
                         <div class="dropdown">
-                            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <i class='fas fa-user'></i> {{ Auth::user()->name }}
                             </button>
